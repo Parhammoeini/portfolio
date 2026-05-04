@@ -1,90 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Parham Moeini Portofilio</title>
-    <link rel="stylesheet" href="portfolio.css" />
-  </head>
-  <body>
-    <video width="600" id="custom-video" autoplay muted loop>
-      <source src="Screen Recording 2024-09-17 123651 (online-video-cutter.com).mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <section class="biography">
-      <h2>About Me</h2>
-      <img src="potorilio image.jpg" alt="Image not Available" height="300px" width="250px">
-      <p>
-        Hello! I’m Parham Moeini, a dedicated Computer Science student at York
-        University in Toronto. With a strong foundation in both backend and
-        frontend web development, I am passionate about creating dynamic and
-        efficient web applications.
-        <br /><br />
-        My journey began with a fascination for technology and programming,
-        leading me to explore various aspects of web development. I have honed
-        my skills in backend technologies like Python and Django, and frontend
-        frameworks including HTML, CSS, and JavaScript. My experience extends to
-        working with databases, APIs, and web scraping techniques, enabling me
-        to build robust and scalable solutions.
-        <br /><br />
-        At York University, I am deepening my knowledge in computer science
-        while applying my skills in real-world projects. I enjoy the challenge
-        of solving complex problems and am always eager to learn new
-        technologies and techniques to enhance my development skills.
-        <br /><br />
-        I am committed to using my expertise to build innovative solutions and
-        am excited about opportunities that allow me to contribute to meaningful
-        projects.
-        <br /><br />
-        Feel free to explore my portfolio and check out my
-        <a href="https://github.com/Parhammoeini" target="_blank"
-          >GitHub repository</a
-        >
-        to see some of the projects I’ve worked on!
-      </p>
-    </section>
-    <div class="project1">
-      <center>
-        <h2 style="font-weight: bold">Web Scrapping project</h2>
-        <video width="600" controls loop>
-          <source src="webscraoervid.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </center>
-      <caption>
-        <br />This Django project, developed by Parham Moeini, is an apartment
-        search portal that allows users to search for rental listings in various
-        cities. The project leverages web scraping techniques to gather real
-        estate data from platforms like Zumper and Apartments.com.
-        <br />The extracted information, such as pricing, address, and contact
-        details, is presented to users in an organized and user-friendly format
-        on the website. After fetching all the data, the program also produces a
-        Excel file for each sourse and let user download the file.<br />
-        The project includes features like, login/sign up system, user
-        authentication, seamless search functionality, and dynamic data display,
-        making it easy for users to find available apartments based on city
-        input.
-        <br />
-        <a href="https://github.com/Parhammoeini/srapingproject" target="_blank"
-          >View Source Code on GitHub</a
-        ><br /><br />
-      </caption>
-      <aside>
-        <h4>Core Technologies and Skills</h4>
-        <ol>
-          <li>Python</li>
-          <li>Pandas</li>
-          <li>Django</li>
-          <li>Selenium Library</li>
-          <li>OpenPyXL</li>
-          <li>Git/GitHub</li>
-          <li>MySQL</li>
-          <li>HTML/CSS</li>
-          <li>JavaScript</li>
-          <li>HTTP and Request</li>
-          <li>POST and GEt concept</li>
-        </ol>
-      </aside>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Parham Moeini — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --surface: #141414;
+    --surface2: #1a1a1a;
+    --border: rgba(255,255,255,0.07);
+    --text: #e8e4dc;
+    --muted: #6b6660;
+    --accent: #c8f060;
+    --accent2: #60c8f0;
+    --tag-bg: rgba(200,240,96,0.08);
+    --tag-border: rgba(200,240,96,0.2);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── Noise overlay ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.4;
+  }
+
+  /* ── Layout ── */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  /* ── Header ── */
+  header {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .header-inner { display: flex; align-items: flex-start; gap: 40px; flex-wrap: wrap; }
+  .avatar {
+    width: 100px; height: 100px; border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+  }
+  .avatar-placeholder {
+    width: 100px; height: 100px; border-radius: 50%;
+    background: var(--surface2);
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800;
+    color: var(--accent); flex-shrink: 0;
+  }
+  .header-text { flex: 1; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 10px;
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 800; line-height: 1.05;
+    color: var(--text); margin-bottom: 16px;
+  }
+  .bio-short {
+    font-size: 14px; color: var(--muted); max-width: 520px; line-height: 1.7;
+  }
+  .links { display: flex; gap: 16px; margin-top: 20px; flex-wrap: wrap; }
+  .links a {
+    font-size: 12px; color: var(--muted); text-decoration: none;
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 6px 14px; transition: all 0.2s;
+    letter-spacing: 0.05em;
+  }
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── Section ── */
+  section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+  .section-label {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 40px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* ── About ── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .about-text { font-size: 14px; color: #a09a94; line-height: 1.9; }
+  .about-text p + p { margin-top: 16px; }
+  .about-text em { font-family: 'Lora', serif; font-style: italic; color: var(--text); }
+  .skills-grid { display: flex; flex-direction: column; gap: 20px; }
+  .skill-category { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 11px; padding: 4px 10px; border-radius: 3px;
+    background: var(--tag-bg); border: 1px solid var(--tag-border);
+    color: var(--accent); letter-spacing: 0.04em;
+  }
+  .tag.blue { background: rgba(96,200,240,0.08); border-color: rgba(96,200,240,0.2); color: var(--accent2); }
+
+  /* ── Projects ── */
+  .projects-list { display: flex; flex-direction: column; gap: 40px; }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+    position: relative;
+  }
+  .project-card:hover { border-color: rgba(255,255,255,0.14); }
+
+  /* Featured badge */
+  .project-card.featured { border-color: rgba(200,240,96,0.2); }
+  .featured-badge {
+    position: absolute; top: 16px; right: 16px;
+    font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+    background: var(--accent); color: #0d0d0d;
+    padding: 4px 10px; border-radius: 2px; font-weight: 700;
+    font-family: 'Syne', sans-serif;
+  }
+
+  .project-header { padding: 28px 28px 0; }
+  .project-number { font-size: 11px; color: var(--muted); margin-bottom: 8px; letter-spacing: 0.1em; }
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 700; color: var(--text);
+    margin-bottom: 6px;
+  }
+  .project-subtitle { font-size: 12px; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 16px; }
+  .project-desc { font-size: 13px; color: #8a8480; line-height: 1.8; margin-bottom: 20px; }
+
+  .project-video {
+    margin: 0 28px 0;
+    border-radius: 8px; overflow: hidden;
+    border: 1px solid var(--border);
+    background: #000;
+  }
+  .project-video video { width: 100%; display: block; max-height: 380px; object-fit: cover; }
+  .video-placeholder {
+    width: 100%; height: 260px;
+    background: var(--surface2);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px; color: var(--muted); font-size: 13px;
+  }
+  .video-placeholder-icon { font-size: 32px; opacity: 0.3; }
+
+  .project-footer {
+    padding: 20px 28px 28px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .project-links { display: flex; gap: 10px; }
+  .project-links a {
+    font-size: 11px; color: var(--muted); text-decoration: none;
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 6px 14px; transition: all 0.2s; letter-spacing: 0.04em;
+  }
+  .project-links a:hover { border-color: var(--accent); color: var(--accent); }
+  .project-links a.primary {
+    background: var(--accent); color: #0d0d0d;
+    border-color: var(--accent); font-weight: 600;
+  }
+  .project-links a.primary:hover { opacity: 0.85; }
+
+  /* Architecture block */
+  .arch-block {
+    margin: 0 28px 20px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 20px;
+  }
+  .arch-title { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .arch-flow {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+    font-size: 11px;
+  }
+  .arch-node {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 4px; padding: 6px 12px; color: var(--text);
+    white-space: nowrap;
+  }
+  .arch-node.highlight { border-color: rgba(200,240,96,0.3); color: var(--accent); }
+  .arch-arrow { color: var(--muted); font-size: 14px; }
+
+  /* Highlight quote */
+  .highlight-quote {
+    margin: 0 28px 20px;
+    border-left: 2px solid var(--accent);
+    padding: 12px 16px;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #a09a94;
+    background: rgba(200,240,96,0.03);
+    border-radius: 0 6px 6px 0;
+  }
+
+  /* ── Footer ── */
+  footer {
+    padding: 40px 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp 0.6s ease forwards; }
+  .fade-in-2 { animation: fadeUp 0.6s 0.1s ease both; }
+  .fade-in-3 { animation: fadeUp 0.6s 0.2s ease both; }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .header-inner { gap: 24px; }
+    .project-header, .project-footer, .project-video, .arch-block, .highlight-quote { padding-left: 20px; padding-right: 20px; }
+    .project-video { margin: 0 20px; }
+    .arch-block { margin: 0 20px 20px; }
+    .highlight-quote { margin: 0 20px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ── HEADER ── -->
+  <header class="fade-in">
+    <div class="header-inner">
+      <div class="avatar-placeholder">P</div>
+      <div class="header-text">
+        <div class="eyebrow">Available for opportunities</div>
+        <h1>Parham<br>Moeini</h1>
+        <p class="bio-short">
+          Computer Science student at York University. Building AI-powered systems,
+          backend APIs, and full-stack applications. Passionate about RAG pipelines,
+          vector databases, and modern cloud architecture.
+        </p>
+        <div class="links">
+          <a href="https://github.com/Parhammoeini" target="_blank">↗ GitHub</a>
+          <a href="mailto:iranii.parham@gmail.com">✉ Email</a>
+          <a href="https://www.linkedin.com/in/parham-moeini-67a499241" target="_blank">↗ LinkedIn</a>
+        </div>
+      </div>
     </div>
-  </body>
+  </header>
+
+  <!-- ── ABOUT ── -->
+  <section class="fade-in-2">
+    <div class="section-label">About</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Hello! I'm a dedicated CS student at York University in Toronto with a strong foundation in backend and frontend development. I'm passionate about creating <em>dynamic and efficient</em> web applications.</p>
+        <p>My journey began with a fascination for technology and programming, leading me to explore backend technologies like Python, Django, and Java Spring Boot, alongside frontend frameworks including React, HTML, CSS, and JavaScript.</p>
+        <p>I enjoy the challenge of solving complex problems and am always eager to learn new technologies — from AI integration and vector databases to cloud deployment and secure API design.</p>
+      </div>
+      <div class="skills-grid">
+        <div>
+          <div class="skill-category">Backend</div>
+          <div class="skill-tags">
+            <span class="tag">Java 21</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">Python</span>
+            <span class="tag">Django</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">JWT Auth</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-category">AI & Data</div>
+          <div class="skill-tags">
+            <span class="tag">RAG Pipelines</span>
+            <span class="tag">Spring AI</span>
+            <span class="tag">pgvector</span>
+            <span class="tag">Ollama</span>
+            <span class="tag">Embeddings</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-category">Frontend & Cloud</div>
+          <div class="skill-tags">
+            <span class="tag blue">React</span>
+            <span class="tag blue">JavaScript</span>
+            <span class="tag blue">Docker</span>
+            <span class="tag blue">Railway</span>
+            <span class="tag blue">Vercel</span>
+            <span class="tag blue">PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section class="fade-in-3">
+    <div class="section-label">Projects</div>
+    <div class="projects-list">
+
+      <!-- PROJECT 1 — CareerFlow AI (FEATURED) -->
+      <div class="project-card featured">
+        <div class="featured-badge">Featured</div>
+        <div class="project-header">
+          <div class="project-number">01 — 2025</div>
+          <div class="project-title">CareerFlow AI</div>
+          <div class="project-subtitle">RAG-Powered Career Consulting Platform</div>
+          <p class="project-desc">
+            An enterprise-grade AI platform where users upload their resume and receive personalized career advice
+            powered by a full Retrieval-Augmented Generation pipeline. The system semantically understands resumes
+            — finding a "Cloud Engineer" even if the resume only says "AWS and Docker" — and supports
+            multi-candidate workspaces with JWT-secured user accounts.
+          </p>
+        </div>
+
+        <!-- Video placeholder — replace src with your actual video -->
+        <div class="project-video">
+          <div class="video-placeholder">
+            <div class="video-placeholder-icon">▶</div>
+            <span>Demo video coming soon — replace this with your recording</span>
+          </div>
+          <video controls loop>
+            <source src="job app demo.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        <div class="arch-block">
+          <div class="arch-title">RAG Pipeline Architecture</div>
+          <div class="arch-flow">
+            <div class="arch-node">PDF Upload</div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-node highlight">Tika Parser</div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-node highlight">Embeddings</div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-node">pgvector Store</div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-node highlight">Cosine Search</div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-node highlight">Groq LLM</div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-node">AI Response</div>
+          </div>
+        </div>
+
+        <div class="highlight-quote">
+          "I implemented a RAG pipeline using Spring AI and pgvector to enable semantic similarity search — finding relevant candidates even when exact keywords don't match. A hybrid-cloud strategy uses separate providers optimized for embeddings vs. LLM inference."
+        </div>
+
+        <div class="project-footer">
+          <div class="project-tags">
+            <span class="tag">Java 21</span>
+            <span class="tag">Spring Boot 3.4</span>
+            <span class="tag">Spring AI</span>
+            <span class="tag">pgvector</span>
+            <span class="tag">RAG</span>
+            <span class="tag">JWT</span>
+            <span class="tag blue">React</span>
+            <span class="tag blue">Groq</span>
+            <span class="tag blue">Docker</span>
+            <span class="tag blue">Railway</span>
+          </div>
+          <div class="project-links">
+            <a href="https://job-consulting-frontend.vercel.app" target="_blank" class="primary">↗ Live App</a>
+            <a href="https://github.com/Parhammoeini/JobConsultingApplication" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 — Web Scraper -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-number">02 — 2024</div>
+          <div class="project-title">Apartment Search Portal</div>
+          <div class="project-subtitle">Django Web Scraping Platform</div>
+          <p class="project-desc">
+            A full-stack Django application that scrapes real estate listings from Zumper and Apartments.com,
+            presenting rental data in a searchable interface. Features user authentication, dynamic city-based search,
+            and automatic Excel export for each data source.
+          </p>
+        </div>
+
+        <div class="project-video">
+          <video width="100%" controls loop>
+            <source src="webscraoervid.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div class="project-footer">
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Django</span>
+            <span class="tag">Selenium</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">MySQL</span>
+            <span class="tag blue">HTML/CSS</span>
+            <span class="tag blue">JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Parhammoeini/srapingproject" target="_blank" class="primary">↗ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>Parham Moeini · Toronto, ON · Built with care · <a href="https://github.com/Parhammoeini" style="color:var(--accent);text-decoration:none;">GitHub</a></p>
+  </footer>
+
+</div>
+
+</body>
 </html>
